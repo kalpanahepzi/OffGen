@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offer Gen</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div id="app" class="container">
+        <h1> OfferGen </h1>
+        <form @submit.prevent="generatePDF">
+            <div class="form-group">
+                <label for="companyLogo">Company Logo (PNG, max 1MB):</label>
+                <input type="file" id="companyLogo" @change="handleLogoUpload" accept="image/png" required>
+            </div>
+            <div class="form-group">
+                <label for="employerName">Employer Name:</label>
+                <input id="employerName" v-model="form.employerName" required>
+            </div>
+            <div class="form-group">
+                <label for="employerAddress">Employer Address:</label>
+                <textarea id="employerAddress" v-model="form.employerAddress" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="employeeFirstName">Employee First Name:</label>
+                <input id="employeeFirstName" v-model="form.employeeFirstName" required>
+            </div>
+            <div class="form-group">
+                <label for="employeeLastName">Employee Last Name:</label>
+                <input id="employeeLastName" v-model="form.employeeLastName" required>
+            </div>
+            <div class="form-group">
+                <label for="employeeAddress">Employee Address:</label>
+                <textarea id="employeeAddress" v-model="form.employeeAddress" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="position">Position:</label>
+                <input id="position" v-model="form.position" required>
+            </div>
+            <div class="form-group">
+                <label for="department">Department:</label>
+                <input id="department" v-model="form.department" required>
+            </div>
+            <div class="form-group">
+                <label for="startDate">Start Date:</label>
+                <input id="startDate" type="date" v-model="form.startDate" required>
+            </div>
+            <div class="form-group">
+                <label for="compensation">Compensation (INR):</label>
+                <input id="compensation" type="number" v-model="form.compensation" required>
+            </div>
+            <div class="form-group">
+                <label for="workingHours">Working Hours:</label>
+                <input id="workingHours" v-model="form.workingHours" placeholder="e.g., 9am to 5pm" required>
+            </div>
+            <div class="form-group">
+                <label for="probationPeriod">Probation Period (months):</label>
+                <input id="probationPeriod" type="number" v-model="form.probationPeriod" required>
+            </div>
+            <div class="form-group">
+                <label for="employmentType">Employment Type:</label>
+                <select id="employmentType" v-model="form.employmentType" required @change="updateCapacityUtilization">
+                    <option value="Full-Time">Full-Time</option>
+                    <option value="Part-Time">Part-Time</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="capacityUtilization">Capacity Utilization:</label>
+                <select id="capacityUtilization" v-model="form.capacityUtilization" required>
+                    <option value="40 hours/week">40 hours/week</option>
+                    <option value="20 hours/week">20 hours/week</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="managerName">Point of Contact (POC):</label>
+                <input id="managerName" v-model="form.managerName" required>
+            </div>
+            <div class="form-group">
+                <label for="managerDesignation">POC Designation:</label>
+                <input id="managerDesignation" v-model="form.managerDesignation" required>
+            </div>
+            <div class="form-group">
+                <label for="offerExpirationDays">Offer Expiration (days from today):</label>
+                <input id="offerExpirationDays" type="number" v-model="form.offerExpirationDays" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Generate Offer Letter</button>
+            </div>
+        </form>
+        <a v-if="pdfUrl" :href="pdfUrl" download="offer_letter.pdf" class="download-link">Download Offer Letter</a>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
