@@ -8,3 +8,8 @@ Key Features:
 2. Dynamic Fields: OfferGen incorporates dynamic fields that automatically populate with information provided by the employer, reducing manual data entry and ensuring accuracy.
 
 3.  Preview and Editing: Employers can preview the offer letter before generating the final document. They can make any necessary edits or revisions to ensure the letter meets their standards and complies with relevant laws and regulations.
+
+ Fully functional web application with all specified features implemented.
+- User documentation including setup instructions, user guide, and troubleshooting tips.
+- Source code hosted on a version control repository (e.g., GitHub).
+- Test cases and documentation for quality assurance.
