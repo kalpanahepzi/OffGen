@@ -15,6 +15,5 @@ Key Features:
 - Source code hosted on a version control repository (e.g., GitHub).
 - Test cases and documentation for quality assurance.
 
-https://klpnahepz.netlify.app/
 
 ***********************************************************************************************************************************************************************************************************************
